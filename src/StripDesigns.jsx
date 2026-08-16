@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import "./StripDesigns.css";
 
 export const templates = [
@@ -41,9 +42,12 @@ export const templates = [
   },
 ];
 
-export function Strip({ template, photos, mock = false }) {
+export const Strip = forwardRef(function Strip(
+  { template, photos, mock = false },
+  ref,
+) {
   return (
-    <div className={`photo-strip ${template.shade}`}>
+    <div className={`photo-strip ${template.shade}`} ref={ref}>
       <div className="strip-head">
         RINJAY BOOTH <span>2026</span>
       </div>
@@ -64,4 +68,5 @@ export function Strip({ template, photos, mock = false }) {
       </div>
     </div>
   );
-}
+});
+

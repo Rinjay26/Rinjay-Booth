@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import html2canvas from "html2canvas";
 import "./App.css";
 import { templates, Strip } from "./StripDesigns";
 function Studio({ template, setTemplate }) {
@@ -42,12 +43,14 @@ function Studio({ template, setTemplate }) {
 }
 function App() {
   const videoRef = useRef(null),
-    streamRef = useRef(null);
+    streamRef = useRef(null),
+    stripRef = useRef(null);
   const [view, setView] = useState("booth"),
     [template, setTemplate] = useState(templates[0]),
     [photos, setPhotos] = useState([]),
     [cameraOn, setCameraOn] = useState(false),
     [countdown, setCountdown] = useState(null),
+    [printing, setPrinting] = useState(false),
     [message, setMessage] = useState("Pilih template, lalu mulai sesi fotomu.");
   useEffect(
     () => () => streamRef.current?.getTracks().forEach((t) => t.stop()),
@@ -120,6 +123,58 @@ function App() {
   const reset = () => {
     setPhotos([]);
     setMessage("Strip dikosongkan. Ambil empat foto baru.");
+  };
+  const printStrip = async () => {
+    if (!stripRef.current) return;
+    setPrinting(true);
+    try {
+      const canvas = await html2canvas(stripRef.current, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: null,
+      });
+      const dataUrl = canvas.toDataURL("image/png");
+      const printWindow = window.open("", "_blank");
+      if (!printWindow) {
+        setMessage("Pop-up diblokir browser. Izinkan pop-up untuk mencetak.");
+        setPrinting(false);
+        return;
+      }
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Rinjay Booth – Print Strip</title>
+            <style>
+              * { margin: 0; padding: 0; }
+              body {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 20px;
+                background: #fff;
+              }
+              img {
+                max-width: 100%;
+                height: auto;
+                width: 320px;
+              }
+              @media print {
+                body { padding: 0; }
+                img { width: 280px; }
+              }
+            </style>
+          </head>
+          <body>
+            <img src="${dataUrl}" onload="setTimeout(()=>{window.print();window.close()},300)" />
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+    } catch {
+      setMessage("Gagal menyiapkan strip untuk print. Silakan coba lagi.");
+    }
+    setPrinting(false);
   };
   return (
     <main>
@@ -218,15 +273,15 @@ function App() {
           </section>
           <aside className="strip-zone">
             <p className="eyebrow">02 / YOUR STRIP</p>
-            <Strip template={template} photos={photos} />
+            <Strip ref={stripRef} template={template} photos={photos} />
             <div className="strip-actions">
               <button onClick={reset}>RESET</button>
               <button
                 className="print"
-                disabled={!photos.length}
-                onClick={() => window.print()}
+                disabled={!photos.length || printing}
+                onClick={printStrip}
               >
-                PRINT STRIP ↗
+                {printing ? "PREPARING…" : "PRINT STRIP ↗"}
               </button>
             </div>
           </aside>
