@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #eeece7;
+}
+body {
+  margin: 0;
+  color: #101010;
+  font-family: "Space Grotesk", Arial, sans-serif;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
