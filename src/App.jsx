@@ -1,39 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-const templates = [
-  { id: "classic", name: "Classic", caption: "THE GOOD TIMES", shade: "paper" },
-  {
-    id: "mono",
-    name: "Monochrome",
-    caption: "STAY IN THIS MOMENT",
-    shade: "ink",
-  },
-  { id: "soft", name: "Soft Frame", caption: "made with love", shade: "soft" },
-];
-function Strip({ template, photos, mock = false }) {
-  return (
-    <div className={`photo-strip ${template.shade}`}>
-      <div className="strip-head">
-        RINJAY BOOTH <span>2026</span>
-      </div>
-      {[0, 1, 2, 3].map((i) => (
-        <div className={`strip-photo ${mock ? "mock" : ""}`} key={i}>
-          {photos[i] ? (
-            <img src={photos[i]} alt={`Photo ${i + 1}`} />
-          ) : mock ? (
-            `PHOTO 0${i + 1}`
-          ) : (
-            <span>0{i + 1}</span>
-          )}
-        </div>
-      ))}
-      <div className="strip-caption">
-        {template.caption}
-        <small>JAKARTA, ID</small>
-      </div>
-    </div>
-  );
-}
+import { templates, Strip } from "./StripDesigns";
 function Studio({ template, setTemplate }) {
   const [title, setTitle] = useState(template.caption);
   return (

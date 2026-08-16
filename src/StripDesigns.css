@@ -1,0 +1,296 @@
+/* ========================================
+   STRIP DESIGNS – All photo-strip styling
+   ======================================== */
+
+/* --- Base strip --- */
+.photo-strip {
+  width: 195px;
+  background: #f9f9f7;
+  padding: 8px 8px 14px;
+  box-shadow: 7px 9px 0 #111;
+  color: #111;
+  transition: background 0.35s, color 0.35s, box-shadow 0.35s, border-radius 0.35s;
+}
+
+.strip-head {
+  font: 7px var(--mono);
+  padding: 3px 2px 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.strip-photo {
+  width: 100%;
+  height: 123px;
+  background: #d9d7d2;
+  margin-bottom: 7px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font: 10px var(--mono);
+  color: #777;
+  transition: background 0.35s, border-radius 0.35s, filter 0.35s, border 0.35s;
+}
+
+.strip-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.strip-caption {
+  text-align: center;
+  padding: 4px 3px 0;
+  font: 13px "Playfair Display";
+  line-height: 1.1;
+  transition: color 0.35s;
+}
+
+.strip-caption small {
+  display: block;
+  font: 7px var(--mono);
+  letter-spacing: 0.8px;
+  margin-top: 6px;
+}
+
+.mock {
+  background: linear-gradient(135deg, #bbb, #eee 50%, #b0afa9);
+  font-size: 8px;
+}
+
+/* --- THEME: Monochrome (ink) --- */
+.photo-strip.ink {
+  background: #151515;
+  color: #fff;
+  box-shadow: 7px 9px 0 #fff;
+}
+
+.ink .strip-photo {
+  filter: grayscale(1);
+  background: #555;
+}
+
+.ink .mock {
+  background: linear-gradient(135deg, #444, #666 50%, #3a3a3a);
+}
+
+/* --- THEME: Soft Frame (soft) --- */
+.photo-strip.soft {
+  background: #e5ded4;
+  border-radius: 85px 85px 0 0;
+}
+
+.soft .strip-photo {
+  border-radius: 65px;
+}
+
+.soft .mock {
+  background: linear-gradient(135deg, #c9c2b5, #e5ddd0 50%, #bdb5a6);
+}
+
+/* =============================================
+   PINK THEMES
+   ============================================= */
+
+/* --- THEME: Rosé --- */
+.photo-strip.rose {
+  background: linear-gradient(175deg, #fff0f3 0%, #ffd6e0 100%);
+  color: #8c2f5a;
+  box-shadow: 7px 9px 0 #e8a0b8;
+}
+
+.rose .strip-head {
+  color: #c26888;
+}
+
+.rose .strip-photo {
+  background: #fce4ec;
+  border: 1px solid #f3b7c8;
+  border-radius: 4px;
+}
+
+.rose .mock {
+  background: linear-gradient(135deg, #f8c8d8, #fde6ed 50%, #f0b4c6);
+  color: #c26888;
+}
+
+.rose .strip-caption {
+  color: #8c2f5a;
+}
+
+.rose .strip-caption small {
+  color: #c26888;
+}
+
+/* --- THEME: Cherry Blossom --- */
+.photo-strip.cherry {
+  background: linear-gradient(170deg, #ffe8ef 0%, #ffb3c6 35%, #ff8fab 100%);
+  color: #5c1633;
+  box-shadow: 6px 8px 18px rgba(255, 105, 135, 0.35), 7px 9px 0 #ff6987;
+  border-radius: 18px;
+  padding: 10px 10px 16px;
+}
+
+.cherry .strip-head {
+  color: #d14d72;
+  padding-bottom: 10px;
+}
+
+.cherry .strip-photo {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  margin-bottom: 8px;
+}
+
+.cherry .mock {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 143, 171, 0.4),
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 179, 198, 0.4)
+  );
+  color: #d14d72;
+  border-radius: 14px;
+}
+
+.cherry .strip-caption {
+  color: #5c1633;
+  padding-top: 6px;
+}
+
+.cherry .strip-caption small {
+  color: #d14d72;
+}
+
+/* --- THEME: Bubblegum --- */
+.photo-strip.bubblegum {
+  background: #ff69b4;
+  color: #fff;
+  box-shadow: 7px 9px 0 #c9387b;
+  border-radius: 0 0 60px 60px;
+  padding: 10px 10px 20px;
+}
+
+.bubblegum .strip-head {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bubblegum .strip-photo {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.bubblegum .mock {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.15)
+  );
+  color: rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+}
+
+.bubblegum .strip-caption {
+  color: #fff;
+}
+
+.bubblegum .strip-caption small {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* =============================================
+   NON-PINK THEMES
+   ============================================= */
+
+/* --- THEME: Vintage --- */
+.photo-strip.vintage {
+  background: #f5e6c8;
+  color: #5a3e1b;
+  box-shadow: 7px 9px 0 #c5a36f;
+  border: 2px solid #c5a36f;
+}
+
+.vintage .strip-head {
+  color: #9b7a48;
+}
+
+.vintage .strip-photo {
+  background: #e8d5b0;
+  border: 1px solid #c5a36f;
+  filter: sepia(0.25) contrast(0.95);
+}
+
+.vintage .mock {
+  background: linear-gradient(135deg, #d9c59e, #f0e0c2 50%, #caad7d);
+  color: #9b7a48;
+  filter: sepia(0.25) contrast(0.95);
+}
+
+.vintage .strip-caption {
+  color: #5a3e1b;
+}
+
+.vintage .strip-caption small {
+  color: #9b7a48;
+}
+
+/* --- THEME: Midnight --- */
+.photo-strip.midnight {
+  background: linear-gradient(175deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #e0d9ff;
+  box-shadow: 0 0 24px rgba(108, 92, 231, 0.35), 7px 9px 0 #6c5ce7;
+  border-radius: 6px;
+}
+
+.midnight .strip-head {
+  color: #a29bfe;
+}
+
+.midnight .strip-photo {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(162, 155, 254, 0.25);
+  border-radius: 4px;
+}
+
+.midnight .mock {
+  background: linear-gradient(
+    135deg,
+    rgba(108, 92, 231, 0.3),
+    rgba(162, 155, 254, 0.15) 50%,
+    rgba(108, 92, 231, 0.25)
+  );
+  color: #a29bfe;
+  border-radius: 4px;
+}
+
+.midnight .strip-caption {
+  color: #e0d9ff;
+}
+
+.midnight .strip-caption small {
+  color: #a29bfe;
+}
+
+/* ========================================
+   Studio-specific strip overrides
+   ======================================== */
+.studio .photo-strip {
+  transform: rotate(3deg);
+}
+
+/* ========================================
+   Print overrides
+   ======================================== */
+@media print {
+  .photo-strip {
+    box-shadow: none;
+    width: 260px;
+  }
+  .strip-photo {
+    height: 164px;
+  }
+}

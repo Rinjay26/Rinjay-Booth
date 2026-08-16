@@ -84,6 +84,8 @@ main {
 }
 .template-list {
   border-top: 1px solid var(--ink);
+  max-height: 320px;
+  overflow-y: auto;
 }
 .template-option {
   width: 100%;
@@ -221,64 +223,6 @@ main {
 .strip-zone .eyebrow {
   align-self: stretch;
 }
-.photo-strip {
-  width: 195px;
-  background: #f9f9f7;
-  padding: 8px 8px 14px;
-  box-shadow: 7px 9px 0 #111;
-  color: #111;
-}
-.strip-head {
-  font: 7px var(--mono);
-  padding: 3px 2px 8px;
-  display: flex;
-  justify-content: space-between;
-}
-.strip-photo {
-  width: 100%;
-  height: 123px;
-  background: #d9d7d2;
-  margin-bottom: 7px;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  font: 10px var(--mono);
-  color: #777;
-}
-.strip-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scaleX(-1);
-}
-.strip-caption {
-  text-align: center;
-  padding: 4px 3px 0;
-  font: 13px "Playfair Display";
-  line-height: 1.1;
-}
-.strip-caption small {
-  display: block;
-  font: 7px var(--mono);
-  letter-spacing: 0.8px;
-  margin-top: 6px;
-}
-.photo-strip.ink {
-  background: #151515;
-  color: #fff;
-  box-shadow: 7px 9px 0 #fff;
-}
-.ink .strip-photo {
-  filter: grayscale(1);
-  background: #555;
-}
-.photo-strip.soft {
-  background: #e5ded4;
-  border-radius: 85px 85px 0 0;
-}
-.soft .strip-photo {
-  border-radius: 65px;
-}
 .strip-actions {
   display: flex;
   gap: 8px;
@@ -335,13 +279,7 @@ main {
   font: 9px var(--mono);
   margin-top: 20px;
 }
-.studio .photo-strip {
-  transform: rotate(3deg);
-}
-.mock {
-  background: linear-gradient(135deg, #bbb, #eee 50%, #b0afa9);
-  font-size: 8px;
-}
+
 footer {
   border-top: 1px solid var(--ink);
   padding: 15px 32px;
@@ -404,11 +342,5 @@ footer {
   .strip-zone {
     padding: 0;
   }
-  .photo-strip {
-    box-shadow: none;
-    width: 260px;
-  }
-  .strip-photo {
-    height: 164px;
-  }
+
 }
